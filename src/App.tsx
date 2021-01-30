@@ -1,20 +1,28 @@
 import React from 'react';
 import './App.css';
-import { BebidasGrid } from './components/BebidasGrid';
-import { SearchBar } from './components/Search';
-import { CategoriasProvider } from './context/categorias'
+import { ListadoTragos } from './components/ListadoTragos';
+import { SearchForm } from './components/SearchForm';
+import { CategoriasProvider } from './context/CategoriasContext'
+import { ModalProvider } from './context/ModalContext';
+import { RecetasProvider } from './context/RecetasContex';
 
 
 const App = () => {
-  return (
-    <CategoriasProvider>
-      <div className="App">
-        <SearchBar />
-        <BebidasGrid>
 
-        </BebidasGrid>
-      </div>
-    </CategoriasProvider>
+  return (
+    <div className="App">
+      <CategoriasProvider>
+        <RecetasProvider>
+          <ModalProvider>
+
+            <SearchForm />
+            <ListadoTragos/>
+            
+
+          </ModalProvider>
+        </RecetasProvider>
+      </CategoriasProvider>
+    </div>
   );
 }
 

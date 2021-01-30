@@ -1,18 +1,20 @@
-import React from 'react'
+import * as React from 'react'
+import { ModalContext } from '../context/ModalContext'
 
-
-type BebidaProps  = {
-  src?: string,
+interface Ibebida {
+  img: string,
   name: string,
-  ingredients: string[]
+  idBebida: string
 }
 
-export const Bebida = ({src,ingredients,name}:BebidaProps) => {
+export const Bebida = ({img,idBebida, name}:Ibebida) => {
+
+  const {setIdReceta} = React.useContext(ModalContext)
   return(
       <ul>
-        <li><img src={src} alt={name}/></li>
+        <li><img src={img} alt={name}/></li>
         <li>{name}</li>
-        <li>{ingredients}</li>
+        <button onClick={()=>setIdReceta(idBebida)}>Ver Receta</button>
       </ul>
   )
 }
